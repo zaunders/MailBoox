@@ -27,7 +27,9 @@
             "RibosomeType": "js",
             "BridgeFuncs": null,
             "BridgeTo": "",
-            "Config": null,
+            "Config": {
+              "ErrorHandling": "returnErrorValue"
+            },
             "Entries": [
                 {
                     "Name": "book",
@@ -46,7 +48,28 @@
                 {
                   "name": "ownerLink",
                   "DataFormat": "links"
+                },
+                {
+                  "name": "borrowRequest",
+                  "DataFormat": "links"
+                },
+                {
+                  "name": "bookBorrowed",
+                  "DataFormat": "links"
+                },
+                {
+                  "name": "returnRequest",
+                  "DataFormat": "links"
+                },
+                {
+                  "name": "borrowedBookLink",
+                  "DataFormat": "links"
+                },
+                {
+                  "name": "returnedBookLink",
+                  "DataFormat": "links"
                 }
+
             ],
             "Functions": [
                 {
@@ -65,6 +88,22 @@
                     "Exposure": "public"
                 },
                 {
+                    "Name": "createBorrowRequest",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+                {
+                    "Name": "acceptBorrowRequest",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+                {
+                    "Name": "lookForRequests",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+
+                {
                     "Name": "displayHash",
                     "CallingType": "json",
                     "Exposure": "public"
@@ -81,6 +120,21 @@
                 },
                 {
                     "Name": "doSampleAction",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+                {
+                    "Name": "acceptReturnRequest",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+                {
+                    "Name": "createReturnRequest",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+                {
+                    "Name": "getBookDirectory",
                     "CallingType": "json",
                     "Exposure": "public"
                 }

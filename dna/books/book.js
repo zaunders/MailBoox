@@ -8,7 +8,71 @@ function bookCreate(input) {
            {Base: App.Agent.Hash, Link: hash, Tag: 'has book'}
         ]}
       )
-  return hash
+  var addToDirectory = commit('ownerLink',
+      {Links:[
+            {Base: App.DNA.Hash, Link: hash, Tag: 'contains'},
+            ]}
+          )
+  return ownerLinkHash
+}
+
+function getBookDirectory() {
+  var directory = getLinks(App.DNA.Hash, 'contains', { Load: true })
+  return directory
+}
+
+
+function createBorrowRequest(ownerLink){
+    var links = commit('borrowRequest',
+    {Links: [
+            {Base: ownerLink, Link: App.Agent.Hash, Tag: 'has received request'},
+            {Base: App.Agent.Hash, Link: ownerLink, Tag: 'has sent request'}
+    ]})
+    return links
+}
+
+function acceptBorrowRequest(ownerLinkHash) {
+  var links = commit('borrowedBookLink',
+  {Links: [
+          {Base: ownerLinkHash, Link: App.Agent.Hash, Tag: 'has lent out book'},
+          {Base: App.Agent.Hash, Link: ownerLinkHash, Tag: 'has borrowed book'}
+  ]})
+  var deletedRequest = commit('borrowRequest',
+  {Links: [
+          {Base: ownerLinkHash, Link: App.Agent.Hash, Tag: 'has received request', LinkAction: HC.LinkAction.Del},
+          {Base: App.Agent.Hash, Link: ownerLinkHash, Tag: 'has sent request', LinkAction: HC.LinkAction.Del}
+  ]})
+  return links
+}
+
+function lookForRequests(){
+    var list = getLinks(App.Agent.Hash, 'has received request')
+    debug(list)
+    return list
+}
+
+function createReturnRequest(ownerLink){
+    var links = commit('returnRequest',
+    {Links: [
+            {Base: ownerLink, Link: App.Agent.Hash, Tag: 'has received return request'},
+            {Base: App.Agent.Hash, Link: ownerLink, Tag: 'has sent return request'}
+    ]})
+    debug(links)
+    return links
+}
+
+function acceptReturnRequest(ownerLinkHash) {
+  var deleteBorrowedBookLink = commit('borrowedBookLink',
+  {Links: [
+          {Base: ownerLinkHash, Link: App.Agent.Hash, Tag: 'has lent out book', LinkAction: HC.LinkAction.Del},
+          {Base: App.Agent.Hash, Link: ownerLinkHash, Tag: 'has borrowed book', LinkAction: HC.LinkAction.Del}
+  ]})
+  var deletedRequest = commit('returnRequest',
+  {Links: [
+          {Base: ownerLinkHash, Link: App.Agent.Hash, Tag: 'has received return request', LinkAction: HC.LinkAction.Del},
+          {Base: App.Agent.Hash, Link: ownerLinkHash, Tag: 'has sent return request', LinkAction: HC.LinkAction.Del}
+  ]})
+  return deleteBorrowedBookLink
 }
 
 function getBooks(owner) {
@@ -50,6 +114,12 @@ function validateCommit (entryName, entry, header, pkg, sources) {
       return true;
     case "ownerLink":
       return true;
+    case "borrowRequest":
+      return true;
+    case "borrowedBookLink":
+      return true;
+    case "returnRequest":
+      return true;
     default:
       // invalid entry name
       return false;
@@ -64,6 +134,12 @@ function validatePut (entryName, entry, header, pkg, sources) {
       return true;
     case "ownerLink":
       return true;
+    case "borrowRequest":
+      return true;
+    case "borrowedBookLink":
+      return true;
+    case "returnRequest":
+      return true;
     default:
       // invalid entry name
       return false;
@@ -76,6 +152,12 @@ function validateMod (entryName, entry, header, replaces, pkg, sources) {
       return true;
     case "collection":
       return true;
+    case "borrowRequest":
+      return true;
+    case "borrowedBookLink":
+      return true;
+    case "returnRequest":
+      return true;
     default:
       // invalid entry name
       return false;
@@ -84,7 +166,15 @@ function validateMod (entryName, entry, header, replaces, pkg, sources) {
 
 function validateDel (entryName, hash, pkg, sources) {
   switch (entryName) {
-    case "sampleEntry":
+    case "book":
+      return true;
+    case "collection":
+      return true;
+    case "borrowRequest":
+      return true;
+    case "borrowedBookLink":
+      return true;
+    case "returnRequest":
       return true;
     default:
       // invalid entry name
@@ -95,6 +185,12 @@ function validateDel (entryName, hash, pkg, sources) {
 function validateLink(linkEntryType,baseHash,links,pkg,sources) {
   switch (linkEntryType) {
     case "ownerLink":
+      return true;
+    case "borrowRequest":
+      return true;
+    case "borrowedBookLink":
+      return true;
+    case "returnRequest":
       return true;
     default:
       return false;
