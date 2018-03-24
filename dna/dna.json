@@ -68,6 +68,10 @@
                 {
                   "name": "returnedBookLink",
                   "DataFormat": "links"
+                },
+                {
+                  "name": "directoryLink",
+                  "DataFormat": "links"
                 }
 
             ],

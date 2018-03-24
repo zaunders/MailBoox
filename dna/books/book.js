@@ -8,7 +8,7 @@ function bookCreate(input) {
            {Base: App.Agent.Hash, Link: hash, Tag: 'has book'}
         ]}
       )
-  var addToDirectory = commit('ownerLink',
+  var addToDirectory = commit('directoryLink',
       {Links:[
             {Base: App.DNA.Hash, Link: hash, Tag: 'contains'},
             ]}
@@ -120,6 +120,8 @@ function validateCommit (entryName, entry, header, pkg, sources) {
       return true;
     case "returnRequest":
       return true;
+    case "directoryLink":
+      return true;
     default:
       // invalid entry name
       return false;
@@ -140,6 +142,8 @@ function validatePut (entryName, entry, header, pkg, sources) {
       return true;
     case "returnRequest":
       return true;
+    case "directoryLink":
+      return true;
     default:
       // invalid entry name
       return false;
@@ -157,6 +161,8 @@ function validateMod (entryName, entry, header, replaces, pkg, sources) {
     case "borrowedBookLink":
       return true;
     case "returnRequest":
+      return true;
+    case "directoryLink":
       return true;
     default:
       // invalid entry name
@@ -176,6 +182,8 @@ function validateDel (entryName, hash, pkg, sources) {
       return true;
     case "returnRequest":
       return true;
+    case "directoryLink":
+      return true;
     default:
       // invalid entry name
       return false;
@@ -191,6 +199,8 @@ function validateLink(linkEntryType,baseHash,links,pkg,sources) {
     case "borrowedBookLink":
       return true;
     case "returnRequest":
+      return true;
+    case "directoryLink":
       return true;
     default:
       return false;
