@@ -1,0 +1,90 @@
+{
+    "Version": 1,
+    "UUID": "e0994deb-2ed0-11e8-bcbd-b8e8560edd9a",
+    "Name": "Distributed Liberary",
+    "Properties": {
+        "description": "A distributed Liberary",
+        "language": "en"
+    },
+    "PropertiesSchemaFile": "properties_schema.json",
+    "BasedOn": {
+        "H": null
+    },
+    "RequiresVersion": 23,
+    "DHTConfig": {
+        "HashType": "sha2-256",
+        "NeighborhoodSize": 0
+    },
+    "Progenitor": {
+        "Identity": "",
+        "PubKey": null
+    },
+    "Zomes": [
+        {
+            "Name": "books",
+            "Description": "Books that can be lended out",
+            "CodeFile": "book.js",
+            "RibosomeType": "js",
+            "BridgeFuncs": null,
+            "BridgeTo": "",
+            "Config": null,
+            "Entries": [
+                {
+                    "Name": "book",
+                    "DataFormat": "json",
+                    "Schema": "",
+                    "SchemaFile": "book.json",
+                    "Sharing": "public"
+                },
+                {
+                    "Name": "collection",
+                    "DataFormat": "json",
+                    "Schema": "",
+                    "SchemaFile": "collection.json",
+                    "Sharing": "public"
+                },
+                {
+                  "name": "ownerLink",
+                  "DataFormat": "links"
+                }
+            ],
+            "Functions": [
+                {
+                    "Name": "bookCreate",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+                {
+                    "Name": "collectionCreate",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+                {
+                    "Name": "getBooks",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+                {
+                    "Name": "displayHash",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+                {
+                    "Name": "updateBookInfo",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+                {
+                    "Name": "sampleEntryRead",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+                {
+                    "Name": "doSampleAction",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                }
+            ]
+        }
+    ]
+}

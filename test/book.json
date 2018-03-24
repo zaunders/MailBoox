@@ -1,0 +1,101 @@
+{
+    "Tests": [
+        {
+            "Convey": "We can create a new book",
+            "Zome": "books",
+            "FnName": "bookCreate",
+            "Input": {
+                "name": "Moby Dick",
+                "author": "Herman Melville",
+                "genre": "thriller"
+            },
+            "Output": "%h1%",
+            "Err": null,
+            "ErrMsg": "",
+            "Regexp": "",
+            "Time": 0,
+            "Wait": 0,
+            "Exposure": "public",
+            "Raw": false,
+            "Repeat": 0,
+            "Benchmark": false
+        },
+        {
+            "Convey": "Updating info on a book",
+            "Zome": "books",
+            "FnName": "updateBookInfo",
+            "Input": {
+                "oldBookInfo": {
+                "name": "Moby Dick",
+                "author": "Herman Melville",
+                "genre": "thriller"
+                },
+                "newBookInfo": {
+                "name": "Hopi Dick",
+                "author": "Herman ss",
+                "genre": "Sci-fi"
+                }
+            },
+            "Output": "%h%",
+            "Err": null,
+            "ErrMsg": "",
+            "Regexp": "",
+            "Time": 0,
+            "Wait": 0,
+            "Exposure": "public",
+            "Raw": false,
+            "Repeat": 0,
+            "Benchmark": false
+        },
+        {
+            "Convey": "We can create an additional book",
+            "Zome": "books",
+            "FnName": "bookCreate",
+            "Input": {
+                "name": "Good Author",
+                "author": "Great book",
+                "genre": "thriller"
+            },
+            "Output": "%h1%",
+            "Err": null,
+            "ErrMsg": "",
+            "Regexp": "",
+            "Time": 0,
+            "Wait": 0,
+            "Exposure": "public",
+            "Raw": false,
+            "Repeat": 0,
+            "Benchmark": false
+        },
+        {
+            "Convey": "Get books from owner",
+            "Zome": "books",
+            "FnName": "getBooks",
+            "Input": "%agent%",
+            "Output": [{
+              "name": "Hopi Dick",
+              "author": "Herman ss",
+              "genre": "Sci-fi"
+            },
+            {
+            "name": "Good Author",
+            "author": "Great book",
+            "genre": "thriller"
+            }],
+            "Err": null,
+            "ErrMsg": "",
+            "Regexp": "",
+            "Time": 0,
+            "Wait": 0,
+            "Exposure": "public",
+            "Raw": false,
+            "Repeat": 0,
+            "Benchmark": false
+        }
+    ],
+    "Identity": "",
+    "Fixtures": {
+        "Agents": null
+    },
+    "Benchmark": false
+}

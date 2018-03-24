@@ -1,0 +1,27 @@
+{
+    "Tests": [
+        {
+            "Convey": "We can create a collection",
+            "Zome": "books",
+            "FnName": "collectionCreate",
+            "Input": {
+                "name": "Sci-fi"
+            },
+            "Output": "%h%",
+            "Err": null,
+            "ErrMsg": "",
+            "Regexp": "",
+            "Time": 0,
+            "Wait": 0,
+            "Exposure": "public",
+            "Raw": false,
+            "Repeat": 0,
+            "Benchmark": false
+        }
+    ],
+    "Identity": "",
+    "Fixtures": {
+        "Agents": null
+    },
+    "Benchmark": false
+}
