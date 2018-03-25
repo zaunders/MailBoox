@@ -54,19 +54,11 @@
                   "DataFormat": "links"
                 },
                 {
-                  "name": "bookBorrowed",
-                  "DataFormat": "links"
-                },
-                {
                   "name": "returnRequest",
                   "DataFormat": "links"
                 },
                 {
                   "name": "borrowedBookLink",
-                  "DataFormat": "links"
-                },
-                {
-                  "name": "returnedBookLink",
                   "DataFormat": "links"
                 },
                 {
@@ -128,7 +120,7 @@
                     "Exposure": "public"
                 },
                 {
-                    "Name": "acceptReturnRequest",
+                    "Name": "markBookReturned",
                     "CallingType": "json",
                     "Exposure": "public"
                 },

@@ -51,6 +51,8 @@ function lookForRequests(){
     return list
 }
 
+/* Probably isn't needed, the owner could always be allowed to terminate a loan
+
 function createReturnRequest(ownerLink){
     var links = commit('returnRequest',
     {Links: [
@@ -61,6 +63,7 @@ function createReturnRequest(ownerLink){
     return links
 }
 
+//old version of cancelling loans
 function acceptReturnRequest(ownerLinkHash) {
   var deleteBorrowedBookLink = commit('borrowedBookLink',
   {Links: [
@@ -72,6 +75,16 @@ function acceptReturnRequest(ownerLinkHash) {
           {Base: ownerLinkHash, Link: App.Agent.Hash, Tag: 'has received return request', LinkAction: HC.LinkAction.Del},
           {Base: App.Agent.Hash, Link: ownerLinkHash, Tag: 'has sent return request', LinkAction: HC.LinkAction.Del}
   ]})
+  return deleteBorrowedBookLink
+}
+*/
+function markBookReturned(ownerLinkHash) {
+  var deleteBorrowedBookLink = commit('borrowedBookLink',
+  {Links: [
+          {Base: ownerLinkHash, Link: App.Agent.Hash, Tag: 'has lent out book', LinkAction: HC.LinkAction.Del},
+          {Base: App.Agent.Hash, Link: ownerLinkHash, Tag: 'has borrowed book', LinkAction: HC.LinkAction.Del}
+  ]})
+
   return deleteBorrowedBookLink
 }
 
