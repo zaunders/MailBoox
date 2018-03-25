@@ -62,6 +62,10 @@
                   "DataFormat": "links"
                 },
                 {
+                    "name": "bookInCollectionLink",
+                    "DataFormat": "links"
+                  },
+                {
                   "name": "directoryLink",
                   "DataFormat": "links"
                 },
