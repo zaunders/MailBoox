@@ -1,19 +1,17 @@
 import { connect } from 'react-redux'
-import Library from './Library'
+import NewBook from './NewBook'
 import {
-  getBooks
+  bookCreate
 } from './actions'
 
 const mapStateToProps = state => {
-  return {
-    books: state.books
-  }
+  return {}
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getBooks: () => {
-      dispatch(getBooks())
+    bookCreate: (book) => {
+      dispatch(bookCreate(book))
     }
   }
 }
@@ -21,4 +19,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Library)
+)(NewBook)
