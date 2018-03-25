@@ -1,19 +1,23 @@
 import { connect } from 'react-redux'
-import App from './App'
+import Book from './Book'
 import {
-  getBooks
+  markBookReturned,
+  borrowBookRequest
 } from './actions'
 
 const mapStateToProps = state => {
   return {
-    ...state
+    book: {}
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getBooks: () => {
-      dispatch(getBooks())
+    returnBook: (ownerLink) => {
+      dispatch(markBookReturned(ownerLink))
+    },
+    borrowBook: (ownerLink) => {
+      dispatch(borrowBookRequest(ownerLink))
     }
   }
 }
@@ -21,4 +25,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(Book)

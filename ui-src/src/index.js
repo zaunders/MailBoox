@@ -4,7 +4,7 @@ import { compact } from 'lodash'
 import { applyMiddleware, compose, createStore } from 'redux'
 import promiseMiddleware from 'redux-promise'
 import { requestSendingMiddleware, hcMiddleware } from 'hc-redux-middleware'
-import clutterApp from './reducers'
+import distrolibApp from './reducers'
 import Root from './Root'
 import './index.css'
 import registerServiceWorker from './registerServiceWorker'
@@ -15,7 +15,7 @@ const middleware = compact([
   promiseMiddleware
 ])
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-let store = createStore(clutterApp, undefined, composeEnhancers(applyMiddleware(...middleware)))
+let store = createStore(distrolibApp, undefined, composeEnhancers(applyMiddleware(...middleware)))
 
 ReactDOM.render(
   <Root store={store} />,

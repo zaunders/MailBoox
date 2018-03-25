@@ -1,17 +1,19 @@
 import { connect } from 'react-redux'
-import NewMeow from './NewMeow'
+import Library from './Library'
 import {
-  post
+  getBooks
 } from './actions'
 
 const mapStateToProps = state => {
-  return {}
+  return {
+    books: []
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    post: (message, then) => {
-      dispatch(post(message, then))
+    getBooks: () => {
+      dispatch(getBooks())
     }
   }
 }
@@ -19,4 +21,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NewMeow)
+)(Library)
