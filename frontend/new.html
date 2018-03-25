@@ -8,7 +8,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="text-center form-new-book-main">
+
+  <!-- TODO Make navbar work on mobile: https://getbootstrap.com/docs/4.0/components/navbar/ -->
   <nav class="navbar navbar-expand-lg fixed-top navbar-white bg-white">
     <a class="navbar-brand font-weight-bold" href="index.html">Distrolib</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,30 +45,14 @@
     </div>
   </nav>
 
-  <div class="container outer-content">
-    <div class="row inner-content">
-      <div class="col-md-4 order-md-1">
-        <img class="book-image" src="images/1984.jpg" alt="">
-      </div>
-      <div class="col-md-8 order-md-2 book-info">
-        <h1 class="font-weight-bold">Title of Book</h1>
-        <h2>By Author</h2>
-        <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
-        <p>
-          <a href="#" class="btn btn-lg btn-success my-2">Borrow</a>
-          <a href="#" class="btn btn-lg btn-outline-secondary my-2">Return</a>
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; 2017-2018 Distrolib</p>
-    <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">Privacy</a></li>
-      <li class="list-inline-item"><a href="#">Terms</a></li>
-      <li class="list-inline-item"><a href="#">Support</a></li>
-    </ul>
-  </footer>
+  <form class="form-new-book">
+    <h1 class="display-4 font-weight-bold">Add Book</h1>
+      <p class="lead font-weight-normal">Add a book to the local collection.</p>
+    <label for="inputEmail" class="sr-only">Title of book</label>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Title of book" required autofocus>
+    <label for="inputPassword" class="sr-only">Author name</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Author name" required>
+    <button class="btn btn-lg btn-success btn-block" type="submit">Add Book</button>
+  </form>
 </body>
 </html>

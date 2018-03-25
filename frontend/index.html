@@ -3,21 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <title>Cards</title>
-
+  <title>Distrolib</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
   <link rel="stylesheet" href="style.css">
-
 </head>
-<body>
 
+<body>
+  <!-- TODO Make navbar work on mobile: https://getbootstrap.com/docs/4.0/components/navbar/ -->
   <nav class="navbar navbar-expand-lg fixed-top navbar-white bg-white">
     <a class="navbar-brand font-weight-bold" href="index.html">Distrolib</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
@@ -42,134 +40,166 @@
           <a class="nav-link" href="#">Borrowed</a>
         </li>
       </ul>
-
     </div>
+    <a class="btn btn-outline-success add-book" href="new.html">Add Book</a>
   </nav>
 
   <div class="position-relative overflow-hidden text-center bg-light" >
-    <div class="col-md-5 p-lg-5 mx-auto my-5" style="padding: 20px 0 20px 0;">
+    <div class="col-md-5 p-lg-5 mx-auto my-5 jumbo">
       <h1 class="display-4 font-weight-bold">Borrow books</h1>
       <p class="lead font-weight-normal">Check out local books with Distrolib. This Holochain app let's you access a thriving collective collection.</p>
+      <a href="new.html"><button type="button" class="btn btn-lg btn-success">Add New Book</button></a>
     </div>
     <div class="product-device box-shadow d-none d-md-block"></div>
     <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
   </div>
 
-  <div class="row profile-all-cards">
+  <div class="row all-books">
 
   <!-- IMPORTANT: the width is set using bootstrap columns -->
 
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-      <a href="book.html"><div class="card profile-card border-0">
-        <div class="profile-card-cover" style="background-image: url('images/1984.jpg')">
+      <a href="book.html">
+        <div class="card single-book border-0">
+          <div class="single-book-cover" style="background-image: url('images/1984.jpg')">
+          </div>
         </div>
-      </div></a>
+      </a>
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-      <a href="book.html"><div class="card profile-card border-0">
-        <div class="profile-card-cover" style="background-image: url('images/alice.jpg')">
+      <a href="book.html">
+        <div class="card single-book border-0">
+          <div class="single-book-cover" style="background-image: url('images/alice.jpg')">
+          </div>
         </div>
-      </div></a>
-    </div>
-
-
-    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-      <a href="book.html"><div class="card profile-card border-0">
-        <div class="profile-card-cover" style="background-image: url('images/persepolis.jpg')">
-        </div>
-      </div></a>
+      </a>
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-      <a href="book.html"><div class="card profile-card border-0">
-        <div class="profile-card-cover" style="background-image: url('images/bible.jpg')">
+      <a href="book.html">
+        <div class="card single-book border-0">
+          <div class="single-book-cover" style="background-image: url('images/persepolis.jpg')">
+          </div>
         </div>
-      </div></a>
+      </a>
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-      <a href="book.html"><div class="card profile-card border-0">
-        <div class="profile-card-cover" style="background-image: url('images/brave.jpg')">
+      <a href="book.html">
+        <div class="card single-book border-0">
+          <div class="single-book-cover" style="background-image: url('images/bible.jpg')">
+          </div>
         </div>
-      </div></a>
+      </a>
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-      <a href="book.html"><div class="card profile-card border-0">
-        <div class="profile-card-cover" style="background-image: url('images/frankenstein.jpg')">
+      <a href="book.html">
+        <div class="card single-book border-0">
+          <div class="single-book-cover" style="background-image: url('images/brave.jpg')">
+          </div>
         </div>
-      </div></a>
+      </a>
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-      <a href="book.html"><div class="card profile-card border-0">
-        <div class="profile-card-cover" style="background-image: url('images/wallflower.jpg')">
+      <a href="book.html">
+        <div class="card single-book border-0">
+          <div class="single-book-cover" style="background-image: url('images/frankenstein.jpg')">
+          </div>
         </div>
-      </div></a>
+      </a>
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-      <a href="book.html"><div class="card profile-card border-0">
-        <div class="profile-card-cover" style="background-image: url('images/resistance.jpg')">
+      <a href="book.html">
+        <div class="card single-book border-0">
+          <div class="single-book-cover" style="background-image: url('images/wallflower.jpg')">
+          </div>
         </div>
-      </div></a>
+      </a>
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-      <a href="book.html"><div class="card profile-card border-0">
-        <div class="profile-card-cover" style="background-image: url('images/1984.jpg')">
+      <a href="book.html">
+        <div class="card single-book border-0">
+          <div class="single-book-cover" style="background-image: url('images/resistance.jpg')">
+          </div>
         </div>
-      </div></a>
+      </a>
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-      <a href="book.html"><div class="card profile-card border-0">
-        <div class="profile-card-cover" style="background-image: url('images/alice.jpg')">
+      <a href="book.html">
+        <div class="card single-book border-0">
+          <div class="single-book-cover" style="background-image: url('images/1984.jpg')">
+          </div>
         </div>
-      </div></a>
+      </a>
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-      <a href="book.html"><div class="card profile-card border-0">
-        <div class="profile-card-cover" style="background-image: url('images/persepolis.jpg')">
+      <a href="book.html">
+        <div class="card single-book border-0">
+          <div class="single-book-cover" style="background-image: url('images/alice.jpg')">
+          </div>
         </div>
-      </div></a>
+      </a>
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-      <a href="book.html"><div class="card profile-card border-0">
-        <div class="profile-card-cover" style="background-image: url('images/bible.jpg')">
+      <a href="book.html">
+        <div class="card single-book border-0">
+          <div class="single-book-cover" style="background-image: url('images/persepolis.jpg')">
+          </div>
         </div>
-      </div></a>
+      </a>
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-      <a href="book.html"><div class="card profile-card border-0">
-        <div class="profile-card-cover" style="background-image: url('images/brave.jpg')">
+      <a href="book.html">
+        <div class="card single-book border-0">
+          <div class="single-book-cover" style="background-image: url('images/bible.jpg')">
+          </div>
         </div>
-      </div></a>
+      </a>
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-      <a href="book.html"><div class="card profile-card border-0">
-        <div class="profile-card-cover" style="background-image: url('images/frankenstein.jpg')">
+      <a href="book.html">
+        <div class="card single-book border-0">
+          <div class="single-book-cover" style="background-image: url('images/brave.jpg')">
+          </div>
         </div>
-      </div></a>
+      </a>
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-      <a href="book.html"><div class="card profile-card border-0">
-        <div class="profile-card-cover" style="background-image: url('images/wallflower.jpg')">
+      <a href="book.html">
+        <div class="card single-book border-0">
+          <div class="single-book-cover" style="background-image: url('images/frankenstein.jpg')">
+          </div>
         </div>
-      </div></a>
+      </a>
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-      <a href="book.html"><div class="card profile-card border-0">
-        <div class="profile-card-cover" style="background-image: url('images/resistance.jpg')">
+      <a href="book.html">
+        <div class="card single-book border-0">
+          <div class="single-book-cover" style="background-image: url('images/wallflower.jpg')">
+          </div>
         </div>
-      </div></a>
+      </a>
+    </div>
+
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+      <a href="book.html">
+        <div class="card single-book border-0">
+          <div class="single-book-cover" style="background-image: url('images/resistance.jpg')">
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 
@@ -181,6 +211,5 @@
       <li class="list-inline-item"><a href="#">Support</a></li>
     </ul>
   </footer>
-
-  </div>
 </body>
+</html>
