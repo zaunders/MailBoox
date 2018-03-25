@@ -25,6 +25,7 @@ public/client
 public/system
 public/uploads
 public/img/emojis
+ui-src/node_modules
 
 /dev_plugins/
 /fetched_plugins/

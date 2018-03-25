@@ -1,0 +1,52 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #555;
+}
+
+.fluid-container {
+  height: 100vh;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.wood-bg {
+  background: url('/seamless_wood_texture.jpg');
+}
+
+.menu {
+  text-align: center;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.book-image {
+  margin: 30px 0;
+}
+
+.inner-book-image {
+  background: rgba(255, 255, 255, 0.8);
+  height: 210px;
+  padding: 20px;
+}
+
+.new-book {
+  display: block;
+}
+
+.book-name {
+  font-weight: bold;
+}
+
+.book-author {
+  font-style: italic;
+}
+
+.book-genre {
+  font-size: 12px;
+}

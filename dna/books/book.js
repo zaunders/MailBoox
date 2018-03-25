@@ -88,7 +88,9 @@ function markBookReturned(ownerLinkHash) {
 }
 
 function getBooks(owner) {
+  owner = owner === undefined ? App.Agent.Hash : owner;
   var links = getLinks(owner, 'has book', { Load: true });
+  debug(links)
   links = links.map(function (e) { return e.Entry; })
   return links
 }
