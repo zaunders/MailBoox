@@ -7,7 +7,8 @@
             "Input": {
                 "name": "Moby Dick",
                 "author": "Herman Melville",
-                "genre": "thriller"
+                "genre": "thriller",
+                "blurb": "This is a book about a guy that is on a boat."
             },
             "Output": "%h1%",
             "Err": null,
@@ -28,12 +29,14 @@
                 "oldBookInfo": {
                 "name": "Moby Dick",
                 "author": "Herman Melville",
-                "genre": "thriller"
+                "genre": "thriller",
+                "blurb": "This is a book about a guy that is on a boat."
                 },
                 "newBookInfo": {
-                "name": "Hopi Dick",
-                "author": "Herman ss",
-                "genre": "Sci-fi"
+                "name": "Foundation and Empire",
+                "author": "Isaac Asimov",
+                "genre": "Sci-fi",
+                "blurb": "Current events, but written 50 years ago."
                 }
             },
             "Output": "%h%",
@@ -53,9 +56,10 @@
             "FnName": "getBooks",
             "Input": "%agent%",
             "Output": [{
-              "name": "Hopi Dick",
-              "author": "Herman ss",
-              "genre": "Sci-fi"
+              "name": "Foundation and Empire",
+              "author": "Isaac Asimov",
+              "genre": "Sci-fi",
+              "blurb": "Current events, but written 50 years ago."
             }],
             "Err": null,
             "ErrMsg": "",
@@ -116,6 +120,24 @@
             "Benchmark": false
         },
         {
+            "Convey": "We can create a collection",
+            "Zome": "books",
+            "FnName": "collectionCreate",
+            "Input": {
+                "name": "Sci-fi"
+            },
+            "Output": "%h%",
+            "Err": null,
+            "ErrMsg": "",
+            "Regexp": "",
+            "Time": 0,
+            "Wait": 0,
+            "Exposure": "public",
+            "Raw": false,
+            "Repeat": 0,
+            "Benchmark": false
+        },
+        {
             "Convey": "Mark book returned",
             "Zome": "books",
             "FnName": "markBookReturned",
@@ -136,7 +158,25 @@
             "Zome": "books",
             "FnName": "getBookDirectory",
             "Input": null,
-            "Output": [{"Entry":{"author":"Herman ss","genre":"Sci-fi","name":"Hopi Dick"},"EntryType":"book","Hash":"QmfFU1tYgdDz5YrjeLueJuzbnqyyGvv52LA7YyQ6yQr18r","Source":"Qmd6YoV1UMthmV6nGjfU5KMKSD3rhsUdkBHSTXE513gbxS"}],
+            "Output": [{"Entry":{"author":"Isaac Asimov","blurb":"Current events, but written 50 years ago.","genre":"Sci-fi","name":"Foundation and Empire"},"EntryType":"book","Hash":"QmY22QCcR23iQVa8hfHLmNq3zRx5eLbF9DEKbaDCuhg6W3","Source":"Qmd6YoV1UMthmV6nGjfU5KMKSD3rhsUdkBHSTXE513gbxS"}],
+            "ErrMsg": "",
+            "Regexp": "",
+            "Time": 0,
+            "Wait": 0,
+            "Exposure": "public",
+            "Raw": false,
+            "Repeat": 0,
+            "Benchmark": false
+        },
+        {
+            "Convey": "Add book to collection",
+            "Zome": "books",
+            "FnName": "addBookToCollection",
+            "Input": {
+              "ownerLinkHash": {"%result%": 0},
+              "collectionHash": {"%result%": 6}
+            },
+            "Output": "%h%",
             "Err": null,
             "ErrMsg": "",
             "Regexp": "",

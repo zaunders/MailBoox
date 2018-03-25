@@ -64,6 +64,10 @@
                 {
                   "name": "directoryLink",
                   "DataFormat": "links"
+                },
+                {
+                  "name": "bookInColletion",
+                  "DataFormat": "links"
                 }
 
             ],
@@ -98,12 +102,6 @@
                     "CallingType": "json",
                     "Exposure": "public"
                 },
-
-                {
-                    "Name": "displayHash",
-                    "CallingType": "json",
-                    "Exposure": "public"
-                },
                 {
                     "Name": "updateBookInfo",
                     "CallingType": "json",
@@ -131,6 +129,11 @@
                 },
                 {
                     "Name": "getBookDirectory",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+                {
+                    "Name": "addBookToCollection",
                     "CallingType": "json",
                     "Exposure": "public"
                 }

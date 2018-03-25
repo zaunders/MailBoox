@@ -47,7 +47,6 @@ function acceptBorrowRequest(ownerLinkHash) {
 
 function lookForRequests(){
     var list = getLinks(App.Agent.Hash, 'has received request')
-    debug(list)
     return list
 }
 
@@ -100,12 +99,13 @@ function collectionCreate(collection) {
   return hash
 }
 
-function displayHash(book) {
-  var hash = commit('book', book)
-  debug(hash)
-  var hash2 = makeHash('book', book)
-  debug(hash2)
-  return hash
+function addBookToCollection(input) {
+  var addedBook = commit('bookInColletion',
+  {Links: [
+          {Base: input.ownerLinkHash, Link: input.collectionHash, Tag: 'is in collection'},
+          {Base: input.collectionHash, Link: input.ownerLinkHash, Tag: 'has book'}
+  ]})
+  return addedBook
 }
 
 
@@ -135,6 +135,8 @@ function validateCommit (entryName, entry, header, pkg, sources) {
       return true;
     case "directoryLink":
       return true;
+    case "bookInColletion":
+      return true;
     default:
       // invalid entry name
       return false;
@@ -157,6 +159,8 @@ function validatePut (entryName, entry, header, pkg, sources) {
       return true;
     case "directoryLink":
       return true;
+    case "bookInColletion":
+      return true;
     default:
       // invalid entry name
       return false;
@@ -176,6 +180,8 @@ function validateMod (entryName, entry, header, replaces, pkg, sources) {
     case "returnRequest":
       return true;
     case "directoryLink":
+      return true;
+    case "bookInColletion":
       return true;
     default:
       // invalid entry name
@@ -197,6 +203,8 @@ function validateDel (entryName, hash, pkg, sources) {
       return true;
     case "directoryLink":
       return true;
+    case "bookInColletion":
+      return true;
     default:
       // invalid entry name
       return false;
@@ -214,6 +222,8 @@ function validateLink(linkEntryType,baseHash,links,pkg,sources) {
     case "returnRequest":
       return true;
     case "directoryLink":
+      return true;
+    case "bookInColletion":
       return true;
     default:
       return false;

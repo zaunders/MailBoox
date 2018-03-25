@@ -10,8 +10,11 @@
 		},
 		"genre":	{
 			"type": "string"
+		},
+		"blurb": {
+			"type": "string"
 		}
 
 	},
-    "required": ["name", "author", "genre"]
+    "required": ["name", "author", "genre", "blurb"]
 }
