@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 class Library extends Component {
   componentWillMount () {
-    this.props.getBooks()
-    this.interval = setInterval(this.props.getBooks, 2000)
+    this.props.getBookDirectory()
+    this.interval = setInterval(this.props.getBookDirectory, 1000)
   }
 
   componentWillUnmount () {
@@ -21,7 +21,7 @@ class Library extends Component {
         </div>
         {this.props.books.map((b, i) => {
           return (
-            <Book key={i} book={b} />
+            <Book key={i} book={b.Entry} />
           )
         })}
       </div>

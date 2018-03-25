@@ -7,7 +7,7 @@ const initialState = {
 export default function distrolibApp (state = initialState, action) {
   const { type, meta, payload } = action
   switch (type) {
-    case A.GET_BOOKS:
+    case A.GET_BOOK_DIRECTORY:
       if (payload) {
         return {
           ...state,
@@ -15,11 +15,6 @@ export default function distrolibApp (state = initialState, action) {
         }
       } else {
         return state
-      }
-    case A.BOOK_CREATE:
-      return {
-        ...state,
-        books: state.books.concat([meta.data])
       }
     default:
       return state

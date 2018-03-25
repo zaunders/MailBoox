@@ -1,6 +1,7 @@
 // Holochain actions
 export const BOOK_CREATE = 'bookCreate'
 export const GET_BOOKS = 'getBooks'
+export const GET_BOOK_DIRECTORY = 'getBookDirectory'
 export const GET_BOOK = 'getBook'
 export const BORROW_BOOK_REQUEST = 'borrowBookRequest'
 export const ACCEPT_BORROW_REQUEST = 'acceptBorrowRequest'
@@ -19,13 +20,23 @@ export function bookCreate (book) {
   }
 }
 
-export function getBooks () {
+export function getBooks (owner) {
   return {
     type: GET_BOOKS,
     meta: {
       isHc: true,
       namespace: 'books',
-      data: undefined
+      data: owner
+    }
+  }
+}
+
+export function getBookDirectory () {
+  return {
+    type: GET_BOOK_DIRECTORY,
+    meta: {
+      isHc: true,
+      namespace: 'books'
     }
   }
 }
