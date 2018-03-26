@@ -1,6 +1,6 @@
 body {
   font-family: 'Open Sans', sans-serif;
-  color: #555;
+  color: #222;
 }
 
 .fluid-container {
@@ -13,6 +13,7 @@ body {
 
 .wood-bg {
   background: url('/seamless_wood_texture.jpg');
+  overflow-y: scroll;
 }
 
 .menu {
@@ -25,14 +26,24 @@ body {
   margin: 0;
 }
 
+.library-row {
+  border-bottom: 18px #563D28 solid;
+  margin-bottom: 20px;
+}
+
 .book-image {
-  margin: 30px 0;
+  margin: 30px 0 0;
 }
 
 .inner-book-image {
   background: rgba(255, 255, 255, 0.8);
   height: 210px;
   padding: 20px;
+  cursor: pointer;
+}
+
+.book-cover {
+  max-height: 400px;
 }
 
 .new-book {
@@ -49,4 +60,21 @@ body {
 
 .book-genre {
   font-size: 12px;
+}
+
+.book-details {
+  text-align: left;
+  font-size: 20px;
+  line-height: 22px;
+  padding: 0 40px 40px 40px;
+}
+
+.book-details-label {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.book-blurb {
+  font-size: 16px;
+  line-height: 18px;
 }

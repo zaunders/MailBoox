@@ -2,7 +2,8 @@ import * as A from '../actions'
 
 const initialState = {
   myHash: '',
-  books: []
+  books: [],
+  selectedBook: null
 }
 
 export default function distrolibApp (state = initialState, action) {
@@ -17,6 +18,11 @@ export default function distrolibApp (state = initialState, action) {
       return {
         ...state,
         myHash: payload
+      }
+    case A.SELECT_BOOK:
+      return {
+        ...state,
+        selectedBook: payload === state.selectedBook ? null : payload
       }
     default:
       return state

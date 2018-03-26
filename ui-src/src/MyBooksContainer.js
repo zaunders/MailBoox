@@ -1,13 +1,14 @@
 import { connect } from 'react-redux'
 import Library from './components/Library'
 import {
-  getBookDirectory
+  getBookDirectory,
+  selectBook
 } from './actions'
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
-    books: state.books.filter(b => b.user === state.myHash)
+    books: state.books.filter(b => b.user === state.myHash),
+    selectedBook: state.selectedBook
   }
 }
 
@@ -15,6 +16,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getBooksFunction: () => {
       dispatch(getBookDirectory())
+    },
+    selectBook: (hash) => {
+      dispatch(selectBook(hash))
     }
   }
 }
