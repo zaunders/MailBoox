@@ -1,6 +1,12 @@
 'use strict';
 
+/*
+TODO: There is a thing happening where stuff breaks if you update the
+book entry, then do stuff with links to the original book hash
+*/
+
 function bookCreate(input) {
+  input.user = App.Agent.Hash
   var hash = commit('book', input)
   var ownerLinkHash = commit('ownerLink',
     {Links:[
@@ -8,46 +14,66 @@ function bookCreate(input) {
            {Base: App.Agent.Hash, Link: hash, Tag: 'has book'}
         ]}
       )
+  // directory stores copies of books
   var addToDirectory = commit('directoryLink',
       {Links:[
             {Base: App.DNA.Hash, Link: hash, Tag: 'contains'},
             ]}
           )
-  return ownerLinkHash
+  return hash
 }
 
 function getBookDirectory() {
-  var directory = getLinks(App.DNA.Hash, 'contains', { Load: true })
+  var directory = getLinks(App.DNA.Hash, 'contains', {Load: true})
+  directory = directory.map(function (book) {
+    var loans = getLinks(book.Hash, "is borrowed by")
+    book.Entry.borrowed = loans.length > 0
+    book.Entry.hash = book.Hash
+    return book.Entry
+  })
   return directory
 }
 
 
-function createBorrowRequest(ownerLink){
+function createBorrowRequest(bookHash){
     var links = commit('borrowRequest',
     {Links: [
-            {Base: ownerLink, Link: App.Agent.Hash, Tag: 'has received request'},
-            {Base: App.Agent.Hash, Link: ownerLink, Tag: 'has sent request'}
+            {Base: bookHash, Link: App.Agent.Hash, Tag: 'has received request'},
+            {Base: App.Agent.Hash, Link: bookHash, Tag: 'has sent request'}
     ]})
     return links
 }
 
-function acceptBorrowRequest(ownerLinkHash) {
+function acceptBorrowRequest(bookHash) {
   var links = commit('borrowedBookLink',
   {Links: [
-          {Base: ownerLinkHash, Link: App.Agent.Hash, Tag: 'has lent out book'},
-          {Base: App.Agent.Hash, Link: ownerLinkHash, Tag: 'has borrowed book'}
+          {Base: bookHash, Link: App.Agent.Hash, Tag: 'is borrowed by'},
+          {Base: App.Agent.Hash, Link: bookHash, Tag: 'has borrowed book'}
   ]})
   var deletedRequest = commit('borrowRequest',
   {Links: [
-          {Base: ownerLinkHash, Link: App.Agent.Hash, Tag: 'has received request', LinkAction: HC.LinkAction.Del},
-          {Base: App.Agent.Hash, Link: ownerLinkHash, Tag: 'has sent request', LinkAction: HC.LinkAction.Del}
+          {Base: bookHash, Link: App.Agent.Hash, Tag: 'has received request', LinkAction: HC.LinkAction.Del},
+          {Base: App.Agent.Hash, Link: bookHash, Tag: 'has sent request', LinkAction: HC.LinkAction.Del}
   ]})
   return links
 }
 
 function lookForRequests(){
-    var list = getLinks(App.Agent.Hash, 'has received request')
-    return list
+    var books = getLinks(App.Agent.Hash, 'has book')
+    var requests = []
+    books.forEach(function(book) {
+      var forBookRequests = getLinks(book.Hash, 'has received request')
+      if (forBookRequests.length > 0){
+        var entry = get(book.Hash)
+        forBookRequests.forEach(function(r) {
+          requests.push({
+            book: entry,
+            requestedBy: r.Hash
+          })
+        })
+      }
+    })
+    return requests
 }
 
 /* Probably isn't needed, the owner could always be allowed to terminate a loan
@@ -77,11 +103,11 @@ function acceptReturnRequest(ownerLinkHash) {
   return deleteBorrowedBookLink
 }
 */
-function markBookReturned(ownerLinkHash) {
+function markBookReturned(bookHash) {
   var deleteBorrowedBookLink = commit('borrowedBookLink',
   {Links: [
-          {Base: ownerLinkHash, Link: App.Agent.Hash, Tag: 'has lent out book', LinkAction: HC.LinkAction.Del},
-          {Base: App.Agent.Hash, Link: ownerLinkHash, Tag: 'has borrowed book', LinkAction: HC.LinkAction.Del}
+          {Base: bookHash, Link: App.Agent.Hash, Tag: 'is borrowed by', LinkAction: HC.LinkAction.Del},
+          {Base: App.Agent.Hash, Link: bookHash, Tag: 'has borrowed book', LinkAction: HC.LinkAction.Del}
   ]})
 
   return deleteBorrowedBookLink
@@ -90,8 +116,12 @@ function markBookReturned(ownerLinkHash) {
 function getBooks(owner) {
   owner = owner === undefined ? App.Agent.Hash : owner;
   var links = getLinks(owner, 'has book', { Load: true });
-  debug(links)
-  links = links.map(function (e) { return e.Entry; })
+  links = links.map(function (e) {
+    var loans = getLinks(e.Hash, 'is borrowed by')
+    e.Entry.borrowed = loans.length > 0
+    e.Entry.hash = e.Hash
+    return e.Entry
+  })
   return links
 }
 
@@ -104,16 +134,16 @@ function collectionCreate(collection) {
 function addBookToCollection(input) {
   var addedBook = commit('bookInColletion',
   {Links: [
-          {Base: input.ownerLinkHash, Link: input.collectionHash, Tag: 'is in collection'},
-          {Base: input.collectionHash, Link: input.ownerLinkHash, Tag: 'has book'}
+          {Base: input.bookHash, Link: input.collectionHash, Tag: 'is in collection'},
+          {Base: input.collectionHash, Link: input.bookHash, Tag: 'has book'}
   ]})
   return addedBook
 }
 
 
 function updateBookInfo(input){
-  var oldhash = makeHash('book', input.oldBookInfo)
-  var hash = update('book', input.newBookInfo, oldhash)
+  input.newBookInfo.user = App.Agent.Hash
+  var hash = update('book', input.newBookInfo, input.oldBookHash)
   return hash
 }
 

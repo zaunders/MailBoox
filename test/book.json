@@ -5,41 +5,12 @@
             "Zome": "books",
             "FnName": "bookCreate",
             "Input": {
-                "name": "Moby Dick",
-                "author": "Herman Melville",
-                "genre": "thriller",
-                "blurb": "This is a book about a guy that is on a boat."
+              "name": "Foundation and Empire",
+              "author": "Isaac Asimov",
+              "genre": "Sci-fi",
+              "blurb": "Current events, but written 50 years ago."
             },
-            "Output": "%h1%",
-            "Err": null,
-            "ErrMsg": "",
-            "Regexp": "",
-            "Time": 0,
-            "Wait": 0,
-            "Exposure": "public",
-            "Raw": false,
-            "Repeat": 0,
-            "Benchmark": false
-        },
-        {
-            "Convey": "Updating info on a book",
-            "Zome": "books",
-            "FnName": "updateBookInfo",
-            "Input": {
-                "oldBookInfo": {
-                "name": "Moby Dick",
-                "author": "Herman Melville",
-                "genre": "thriller",
-                "blurb": "This is a book about a guy that is on a boat."
-                },
-                "newBookInfo": {
-                "name": "Foundation and Empire",
-                "author": "Isaac Asimov",
-                "genre": "Sci-fi",
-                "blurb": "Current events, but written 50 years ago."
-                }
-            },
-            "Output": "%h%",
+            "Output": "%h2%",
             "Err": null,
             "ErrMsg": "",
             "Regexp": "",
@@ -59,7 +30,10 @@
               "name": "Foundation and Empire",
               "author": "Isaac Asimov",
               "genre": "Sci-fi",
-              "blurb": "Current events, but written 50 years ago."
+              "blurb": "Current events, but written 50 years ago.",
+              "user": "%agent%",
+              "borrowed": false,
+              "hash": {"%result%": 0}
             }],
             "Err": null,
             "ErrMsg": "",
@@ -88,12 +62,60 @@
             "Benchmark": false
         },
         {
+            "Convey": "Check to see requests",
+            "Zome": "books",
+            "FnName": "lookForRequests",
+            "Input": null,
+            "Output": [{
+                "book": {
+                  "name": "Foundation and Empire",
+                  "author": "Isaac Asimov",
+                  "genre": "Sci-fi",
+                  "blurb": "Current events, but written 50 years ago.",
+                  "user": "%agent%"
+                },
+                "requestedBy": "%agent%"
+              }],
+            "Err": null,
+            "ErrMsg": "",
+            "Regexp": "",
+            "Time": 0,
+            "Wait": 0,
+            "Exposure": "public",
+            "Raw": false,
+            "Repeat": 0,
+            "Benchmark": false
+        },
+        {
             "Convey": "Accept request to borrow",
             "Zome": "books",
             "FnName": "acceptBorrowRequest",
             "Input": {"%result%": 0},
             "Output": "%h1%",
             "Err": null,
+            "ErrMsg": "",
+            "Regexp": "",
+            "Time": 0,
+            "Wait": 0,
+            "Exposure": "public",
+            "Raw": false,
+            "Repeat": 0,
+            "Benchmark": false
+        },
+        {
+            "Convey": "Get book directory confirms book is borrowed",
+            "Zome": "books",
+            "FnName": "getBookDirectory",
+            "Input": null,
+            "Output": [{
+              "borrowed": true,
+              "user": "%agent%",
+              "hash": {"%result%": 0},
+              "author":"Isaac Asimov",
+              "blurb":"Current events, but written 50 years ago.",
+              "genre":"Sci-fi",
+              "name":"Foundation and Empire"
+            }],
             "ErrMsg": "",
             "Regexp": "",
             "Time": 0,
@@ -154,11 +176,11 @@
             "Benchmark": false
         },
         {
-            "Convey": "Get book directory",
+            "Convey": "Get book directory confirms book is available again",
             "Zome": "books",
             "FnName": "getBookDirectory",
             "Input": null,
-            "Output": [{"Entry":{"author":"Isaac Asimov","blurb":"Current events, but written 50 years ago.","genre":"Sci-fi","name":"Foundation and Empire"},"EntryType":"book","Hash":"QmY22QCcR23iQVa8hfHLmNq3zRx5eLbF9DEKbaDCuhg6W3","Source":"Qmd6YoV1UMthmV6nGjfU5KMKSD3rhsUdkBHSTXE513gbxS"}],
+            "Output": [{"borrowed":false, "author":"Isaac Asimov","blurb":"Current events, but written 50 years ago.","genre":"Sci-fi","hash":{"%result%": 0},"name":"Foundation and Empire","user":"%agent%"}],
             "ErrMsg": "",
             "Regexp": "",
             "Time": 0,
@@ -173,8 +195,32 @@
             "Zome": "books",
             "FnName": "addBookToCollection",
             "Input": {
-              "ownerLinkHash": {"%result%": 0},
-              "collectionHash": {"%result%": 6}
+              "bookHash": {"%result%": 0},
+              "collectionHash": {"%result%": 7}
+            },
+            "Output": "%h%",
+            "Err": null,
+            "ErrMsg": "",
+            "Regexp": "",
+            "Time": 0,
+            "Wait": 0,
+            "Exposure": "public",
+            "Raw": false,
+            "Repeat": 0,
+            "Benchmark": false
+        },
+        {
+            "Convey": "Updating info on a book",
+            "Zome": "books",
+            "FnName": "updateBookInfo",
+            "Input": {
+                "oldBookHash": {"%result%": 0},
+                "newBookInfo": {
+                  "name": "Moby Dick",
+                  "author": "Herman Melville",
+                  "genre": "thriller",
+                  "blurb": "This is a book about a guy that is on a boat."
+                }
             },
             "Output": "%h%",
             "Err": null,

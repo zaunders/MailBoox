@@ -13,8 +13,10 @@
 		},
 		"blurb": {
 			"type": "string"
+		},
+		"user": {
+			"type": "string"
 		}
-
 	},
-    "required": ["name", "author", "genre", "blurb"]
+    "required": ["name", "author", "genre", "blurb", "user"]
 }
