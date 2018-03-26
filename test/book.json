@@ -232,6 +232,22 @@
             "Raw": false,
             "Repeat": 0,
             "Benchmark": false
+        },
+        {
+            "Convey": "We can get my hash",
+            "Zome": "books",
+            "FnName": "getMyHash",
+            "Input": null,
+            "Output": "%agent%",
+            "Err": null,
+            "ErrMsg": "",
+            "Regexp": "",
+            "Time": 0,
+            "Wait": 0,
+            "Exposure": "public",
+            "Raw": false,
+            "Repeat": 0,
+            "Benchmark": false
         }
     ],
     "Identity": "",

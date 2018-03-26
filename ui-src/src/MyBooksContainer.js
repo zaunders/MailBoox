@@ -1,17 +1,20 @@
 import { connect } from 'react-redux'
-import App from './App'
+import Library from './components/Library'
 import {
-  getMyHash
+  getBookDirectory
 } from './actions'
 
 const mapStateToProps = state => {
-  return {}
+  console.log(state)
+  return {
+    books: state.books.filter(b => b.user === state.myHash)
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getMyHash: () => {
-      dispatch(getMyHash())
+    getBooksFunction: () => {
+      dispatch(getBookDirectory())
     }
   }
 }
@@ -19,4 +22,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(Library)

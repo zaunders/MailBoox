@@ -5,6 +5,10 @@ TODO: There is a thing happening where stuff breaks if you update the
 book entry, then do stuff with links to the original book hash
 */
 
+function getMyHash() {
+    return App.Agent.Hash;
+}
+
 function bookCreate(input) {
   input.user = App.Agent.Hash
   var hash = commit('book', input)

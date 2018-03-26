@@ -1,5 +1,6 @@
 // Holochain actions
 export const BOOK_CREATE = 'bookCreate'
+export const GET_MY_HASH = 'getMyHash'
 export const GET_BOOKS = 'getBooks'
 export const GET_BOOK_DIRECTORY = 'getBookDirectory'
 export const GET_BOOK = 'getBook'
@@ -16,6 +17,16 @@ export function bookCreate (book) {
       isHc: true,
       namespace: 'books',
       data: book
+    }
+  }
+}
+
+export function getMyHash () {
+  return {
+    type: GET_MY_HASH,
+    meta: {
+      isHc: true,
+      namespace: 'books'
     }
   }
 }

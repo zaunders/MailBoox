@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import Library from './Library'
+import Library from './components/Library'
 import {
   getBookDirectory
 } from './actions'
@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getBookDirectory: () => {
+    getBooksFunction: () => {
       dispatch(getBookDirectory())
     }
   }

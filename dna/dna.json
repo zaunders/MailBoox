@@ -140,6 +140,11 @@
                     "Name": "addBookToCollection",
                     "CallingType": "json",
                     "Exposure": "public"
+                },
+                {
+                    "Name": "getMyHash",
+                    "CallingType": "string",
+                    "Exposure": "public"
                 }
             ]
         }
