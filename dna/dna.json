@@ -7,9 +7,7 @@
         "language": "en"
     },
     "PropertiesSchemaFile": "properties_schema.json",
-    "BasedOn": {
-        "H": null
-    },
+    "BasedOn": "",
     "RequiresVersion": 23,
     "DHTConfig": {
         "HashType": "sha2-256",
