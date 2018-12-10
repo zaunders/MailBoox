@@ -21,7 +21,7 @@ class NewBook extends Component {
         "blurb": "This is a book about a guy that is on a boat."
     }
     */
-    this.props.bookCreate({
+    this.props.createBook({
       name: this.state.name,
       author: this.state.author,
       genre: this.state.genre,

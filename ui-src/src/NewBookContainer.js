@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import NewBook from './NewBook'
 import {
-  bookCreate
+  createBook
 } from './actions'
 
 const mapStateToProps = state => {
@@ -10,8 +10,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    bookCreate: (book) => {
-      dispatch(bookCreate(book))
+    createBook: (book) => {
+      dispatch(createBook(book))
     }
   }
 }

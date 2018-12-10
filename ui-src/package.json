@@ -4,10 +4,10 @@
   "private": true,
   "proxy": "http://localhost:4141",
   "dependencies": {
+    "@holochain/hc-redux-middleware": "^1.0.5",
     "axios": "^0.17.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "hc-redux-middleware": "^1.0.3",
     "jest": "^22.1.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
@@ -19,6 +19,7 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-promise": "^0.5.3",
+    "rpc-websockets": "^4.3.5",
     "storybook": "^1.0.0",
     "storybook-addon-specifications": "^2.1.1"
   },

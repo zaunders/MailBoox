@@ -7,7 +7,7 @@ import NewBookContainer from './NewBookContainer'
 
 class App extends Component {
   componentWillMount () {
-    this.props.getMyHash()
+    this.props.getMyAddress()
   }
 
   render () {

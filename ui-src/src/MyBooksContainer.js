@@ -7,7 +7,7 @@ import {
 
 const mapStateToProps = state => {
   return {
-    books: state.books.filter(b => b.user === state.myHash),
+    books: state.books.filter(b => b.user === state.myAddress),
     selectedBook: state.selectedBook
   }
 }
